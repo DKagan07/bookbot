@@ -15,7 +15,8 @@ def main():
     print(f"{word_count} words found in document")
     print()
     for l in sorted_dict:
-        print(f"the '{l}' character was found {book_letter_count[l]} times")
+        if l.isalpha():
+            print(f"the '{l}' character was found {book_letter_count[l]} times")
     print("--- End report ---")
 
 
@@ -42,10 +43,9 @@ def count_chars(s):
 
     for letter in s:
         letter = letter.lower()
-        if letter.isalpha():
-            if letter not in chars_dict:
-                chars_dict[letter] = 0
-            chars_dict[letter] += 1
+        if letter not in chars_dict:
+            chars_dict[letter] = 0
+        chars_dict[letter] += 1
 
     return chars_dict
 
